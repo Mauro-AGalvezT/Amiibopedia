@@ -4,7 +4,10 @@
              x:Class="Amiibopedia.MainPage">
 
     <StackLayout>
-        <SearchBar Placeholder="¡Busca a tu Amiibo!"></SearchBar>
+        <SearchBar Placeholder="¡Busca a tu Amiibo!"
+                   x:Name="search"
+                   SearchCommand="{Binding SearchCommand}" 
+                   SearchCommandParameter="{Binding Text, Source={x:Reference search}}"></SearchBar>
         <ListView>
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
