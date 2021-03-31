@@ -19,13 +19,16 @@ namespace Amiibopedia.ViewModels
         public MainPageViewModel()
         {
             SearchCommand =
-                new Command(async (text) =>
+                new Command(async (param) =>
                 {
-                    string url = $"https://www.amiiboapi.com/api/amiibo/?character={text}";
-                    var service = new HttpsHelper<Amiibos>();
-                    var amiibos = await service.GetRestServiceDataAsync(url);
-                    Amiibos = new ObservableCollection<Amiibo>(amiibos.amiibo);
-                   
+                    var character = param as Character;
+                    if(character!=null)
+                    {
+                        string url = $"https://www.amiiboapi.com/api/amiibo/?character={character.name}";
+                        var service = new HttpsHelper<Amiibos>();
+                        var amiibos = await service.GetRestServiceDataAsync(url);
+                        Amiibos = new ObservableCollection<Amiibo>(amiibos.amiibo);
+                    }                                   
                 });
         }
 

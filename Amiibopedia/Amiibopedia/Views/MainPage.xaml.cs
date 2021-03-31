@@ -20,8 +20,13 @@ namespace Amiibopedia
         {
             base.OnAppearing();
             ViewModel = new MainPageViewModel();
-            this.BindingContext = ViewModel;
             await ViewModel.LoadCharacters();
+            this.BindingContext = ViewModel;
         }
+
+        //private void SfAutoComplete_SelectionChanged(object sender, Syncfusion.SfAutoComplete.XForms.SelectionChangedEventArgs e)
+        //{
+        //    e.Value
+        //}
     }
 }
