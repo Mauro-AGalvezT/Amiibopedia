@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms" 
              xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
-             x:Class="Amiibopedia.MainPage">
+             x:Class="Amiibopedia.MainPage"
+             Title="AmiiboPedia">
 
     <StackLayout>
         <!--<SearchBar Placeholder="¡Busca a tu Amiibo!"
@@ -22,15 +23,41 @@
                     EventArgsPropertyPath="Value"/>
             </autocomplete:SfAutoComplete.Behaviors>
         </autocomplete:SfAutoComplete>
-        <ListView>
-            <ListView.ItemsSource>
+        <ListView
+            ItemsSource="{Binding Amiibos}"
+            RowHeight="250">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell
+                        Appearing="ViewCell_Appearing">
+                        <Frame
+                            CornerRadius="5"
+                            BackgroundColor="White"
+                            Margin="5">
+                            <StackLayout>
+                                <Image
+                                    Source="{Binding image}"
+                                    HeightRequest="100"
+                                    ></Image>
+                                <Label
+                                    Text="{Binding name}"
+                                    FontSize="Large"></Label>
+                                <Label Text="{Binding amiiboSeries, StringFormat='Amiibo Series: {0} '}"></Label>
+                                <Label Text="{Binding gameSeries, StringFormat='Game Series: {0} '}"></Label>
+                                <Label Text="{Binding type, StringFormat='Type: {0} '}"></Label> 
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--<ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Mario</x:String>
                     <x:String>Mario 2</x:String>
                     <x:String>Mario 3</x:String>
                     <x:String>Mario 4</x:String>
                 </x:Array>
-            </ListView.ItemsSource>
+            </ListView.ItemsSource>-->
         </ListView>
     </StackLayout>
 

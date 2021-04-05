@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Codexcite.Reloader.Forms" Version="1.2.4" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="19.1.0.54" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
